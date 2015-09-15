@@ -8,9 +8,11 @@ func Search(txt string, patterns []string) []string {
 	in := indices(txt, patterns)
 	matches := make([]string, len(in))
 	i := 0
-	for p := range in {
-		matches[i] = patterns[p]
-		i++
+	for j, p := range patterns {
+		if _, ok := in[j]; ok {
+			matches[i] = p
+			i++
+		}
 	}
 
 	return matches
