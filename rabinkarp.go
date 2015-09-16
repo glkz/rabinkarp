@@ -1,9 +1,17 @@
+/*
+Package rabinkarp implements Rabin-Karp* string search algorithm.
+
+Provides searching multiple patterns with an average O(n+m) time complexity
+(where n is the length of text and m is the combined length of pattern strings).
+
+* https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm
+*/
 package rabinkarp
 
 const base = 16777619
 
-// Search implements rabin-karp algorithm for multiple patterns and returns
-// a slice of matched patterns.
+// Search searches given patterns in txt and returns the matched ones. Returns
+// empty string slice if there is no match.
 func Search(txt string, patterns []string) []string {
 	in := indices(txt, patterns)
 	matches := make([]string, len(in))
